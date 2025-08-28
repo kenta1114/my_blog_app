@@ -1,4 +1,3 @@
-version: "1"
 services:
   - type: web
     name: my-blog-app
@@ -18,9 +17,9 @@ services:
         fromDatabase:
           name: my-blog-app-db
           property: connectionString
-  - type: pserv
-    name: my-blog-app-db
-    runtime: postgres
-    plan: free
+
+databases:
+  - name: my-blog-app-db
     databaseName: my_blog_app_production
-    databaseUser: my_blog_app
+    user: my_blog_app
+    plan: free
