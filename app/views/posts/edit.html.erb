@@ -1,12 +1,14 @@
-<% content_for :title, "Editing post" %>
+<% content_for :title, "投稿を編集" %>
 
-<h1>Editing post</h1>
+<h1>投稿を編集</h1>
 
 <%= render "form", post: @post %>
 
 <br>
 
 <div>
-  <%= link_to "Show this post", @post %> |
-  <%= link_to "Back to posts", posts_path %>
+  <%= link_to "詳細を見る", @post, 
+      style: "background-color: #17a2b8; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; margin-right: 10px;" %>
+  <%= link_to "一覧に戻る", posts_path, 
+      style: "background-color: #6c757d; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px;" %>
 </div>

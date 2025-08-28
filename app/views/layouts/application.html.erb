@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "My Blog App" %></title>
+    <title><%= content_for(:title) || "私のブログ" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -22,6 +22,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header style="background-color: #343a40; color: white; padding: 1rem 0; margin-bottom: 2rem;">
+      <div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+        <%= link_to "私のブログ", root_path, style: "color: white; text-decoration: none; font-size: 1.5rem; font-weight: bold;" %>
+        <nav style="margin-top: 0.5rem;">
+          <%= link_to "ホーム", root_path, style: "color: #ccc; text-decoration: none; margin-right: 1rem;" %>
+          <%= link_to "新しい投稿", new_post_path, style: "color: #ccc; text-decoration: none;" %>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer style="background-color: #f8f9fa; padding: 2rem 0; margin-top: 3rem; text-align: center; color: #6c757d;">
+      <div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+        <p>&copy; <%= Date.current.year %> 私のブログ. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>

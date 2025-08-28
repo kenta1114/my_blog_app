@@ -1,16 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Posts" %>
+<% content_for :title, "ブログ投稿一覧" %>
 
-<h1>Posts</h1>
+<h1>ブログ投稿一覧</h1>
 
 <div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+  <% if @posts.any? %>
+    <% @posts.order(created_at: :desc).each do |post| %>
+      <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+        <%= render post %>
+        <p style="margin-top: 10px;">
+          <%= link_to "詳細を見る", post, style: "margin-right: 10px;" %>
+          <%= link_to "編集", edit_post_path(post), style: "margin-right: 10px;" %>
+          <%= button_to "削除", post, method: :delete, 
+                confirm: "本当に削除しますか？", 
+                style: "display: inline; background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;" %>
+        </p>
+        <small style="color: #666;">投稿日時: <%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></small>
+      </div>
+    <% end %>
+  <% else %>
+    <p>まだ投稿がありません。</p>
   <% end %>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<%= link_to "新しい投稿", new_post_path, 
+    style: "background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 20px;" %>

@@ -1,12 +1,9 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
+  <h3 style="margin-bottom: 10px; color: #333;">
     <%= post.title %>
-  </p>
+  </h3>
 
-  <p>
-    <strong>Content:</strong>
-    <%= post.content %>
-  </p>
-
+  <div style="margin-bottom: 10px; line-height: 1.6;">
+    <%= simple_format(post.content) %>
+  </div>
 </div>
